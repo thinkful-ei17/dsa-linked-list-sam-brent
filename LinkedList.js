@@ -182,17 +182,7 @@ const findLast = list => {
   }
   return currentNode;
 };
-previous=null
-current=this.head
-next=current.next
 
-head
-1 
-2
-3 
-4 
-5
-null
 
 const reverseLinkedList = (list) => {
   if (list.head === null) {
@@ -202,12 +192,20 @@ const reverseLinkedList = (list) => {
   let tempNode = currentNode.next;
   let previousNode = null;
   while (currentNode !== null){
-    tempNode = currentNode;
+    console.log('temp',tempNode);
+    console.log('previous',previousNode);
+    console.log('current', currentNode);
+    tempNode = Object.assign({}, currentNode);
+    console.log('TEMPNODE', tempNode);
     currentNode.next = previousNode;
+    console.log('TEMPNODE MUTATED?', tempNode);
     // set to current
     previousNode = tempNode;
     // set to next
     currentNode = tempNode.next;
+    console.log('post temp', tempNode);
+    console.log('post previous', previousNode);
+    console.log('post current', currentNode);
   }
   list.head = previousNode;
 };
@@ -254,3 +252,11 @@ main();
 //     }
 //   }
 // 
+
+// head cat
+// cat  dog 
+// dog  pig 
+// pig  bird 
+// bird null
+// null
+
