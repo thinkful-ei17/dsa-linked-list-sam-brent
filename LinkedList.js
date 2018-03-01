@@ -33,6 +33,53 @@ class LinkedList {
     }
   }
 
+  insertBefore(newItem, targetItem){
+    if (this.head === null) {
+      throw new Error('Item not found');
+    }
+    if (this.head.value === targetItem){
+      this.insertFirst(newItem);
+      return;
+    }
+    let currentNode = this.head;
+    let previousNode; 
+    while (currentNode.value !== targetItem){
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+      if (currentNode === null){
+        throw new Error('An error has occured :)');
+      }
+    }
+    
+    previousNode.next = new _Node(newItem, currentNode);
+  }
+
+  insertAfter(){
+
+  }
+
+  insertAt(newItem, position) {
+    if (this.head === null) {
+      throw new Error('Item not found');
+    }
+    if (position === 1) {
+      this.insertFirst(newItem);
+      return;
+    }
+    let currentNode = this.head;
+    let previousNode;
+    // initialize at 0 to loop through to the end node
+    for (let i = 1; i < position; i++) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+      if (currentNode === null) {
+        throw new Error('An error has occured :)');
+      }
+    }
+    previousNode.next = new _Node(newItem, currentNode);
+  }
+  
+
   remove(item) {
     if (this.head === null) {
       throw new Error('Item not found');
@@ -77,7 +124,7 @@ const main = () => {
   SLL.insertFirst('Husker');
   SLL.insertFirst('Starbuck');
   SLL.insertLast('Tauhida');
-  SLL.remove('squirrel');
+  SLL.insertBefore('Athena', 'Boomer');
 };
 
 main();
