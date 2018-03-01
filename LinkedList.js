@@ -204,7 +204,19 @@ const thirdFromEnd = list => {
   if (list.head === null) {
     throw new Error('The list is empty!');
   }
-}
+  let currentNode = list.head;
+  let previousNode = null;
+  let twoBefore = null;
+  let threeBefore = null;
+
+  while (currentNode !== null) {
+    threeBefore = twoBefore;
+    twoBefore = previousNode;
+    previousNode = currentNode;
+    currentNode = currentNode.next;
+  }
+  return threeBefore;
+};
 
 const main = () => {
   const SLL = new LinkedList();
@@ -219,13 +231,14 @@ const main = () => {
   SLL.insertAt('Kat', 3);
   SLL.remove('Tauhida');
 
-  console.log('before func', display(SLL));
-  reverseLinkedList(SLL);
-  console.log('after', display(SLL));
+  // console.log('before func', display(SLL));
+  // reverseLinkedList(SLL);
+  // console.log('after', display(SLL));
   // console.log(size(SLL));
   // console.log(isEmpty(SLL));
   // console.log(findPrevious(SLL, 'Kat'));
   // console.log(findLast(SLL));
+  console.log(thirdFromEnd(SLL));
 };
 main();
 
