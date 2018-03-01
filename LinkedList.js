@@ -200,6 +200,12 @@ const reverseLinkedList = (list) => {
   }
 };
 
+const thirdFromEnd = list => {
+  if (list.head === null) {
+    throw new Error('The list is empty!');
+  }
+}
+
 const main = () => {
   const SLL = new LinkedList();
   SLL.insertFirst('Apollo');
