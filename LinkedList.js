@@ -34,6 +34,13 @@ class LinkedList {
   }
 
   remove(item) {
+    if (this.head === null) {
+      throw new Error('Item not found');
+    }
+    if (this.head.value === item) {
+      this.head = this.head.next;
+      return;
+    }
     let currentNode = this.head;
     let previousNode;
     while (currentNode.value !== item) {
@@ -48,6 +55,9 @@ class LinkedList {
   }
 
   find(item) {
+    if (this.head === null){
+      throw new Error('Item not found');
+    }
     let currentNode = this.head;
     while (currentNode.value !== item) {
       currentNode = currentNode.next;
@@ -55,7 +65,7 @@ class LinkedList {
         throw new Error('This item is not included in this list');
       }
     }
-    return currentNode.value;
+    return currentNode;
   }
 }
 
