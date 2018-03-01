@@ -189,25 +189,15 @@ const reverseLinkedList = (list) => {
     throw new Error('Cant reverse nothing :(');
   }
   let currentNode = list.head;
-  let tempNode = currentNode.next;
+  let next;
   let previousNode = null;
   while (currentNode !== null){
-    console.log('temp',tempNode);
-    console.log('previous',previousNode);
-    console.log('current', currentNode);
-    tempNode = Object.assign({}, currentNode);
-    console.log('TEMPNODE', tempNode);
+    next = currentNode.next;
     currentNode.next = previousNode;
-    console.log('TEMPNODE MUTATED?', tempNode);
-    // set to current
-    previousNode = tempNode;
-    // set to next
-    currentNode = tempNode.next;
-    console.log('post temp', tempNode);
-    console.log('post previous', previousNode);
-    console.log('post current', currentNode);
+    previousNode = currentNode;
+    list.head = currentNode;
+    currentNode = next;
   }
-  list.head = previousNode;
 };
 
 const main = () => {
