@@ -131,7 +131,7 @@ const display = list => {
   const results = [];
   let currentNode = list.head;
   while (currentNode !== null) {
-    results.push(currentNode);
+    results.push(currentNode.value);
     currentNode = currentNode.next;
   }
   return results;
@@ -198,12 +198,31 @@ const main = () => {
   SLL.insertBefore('Athena', 'Boomer');
   SLL.insertAfter('Hot Dog', 'Helo');
   SLL.insertAt('Kat', 3);
-  SLL.remove('Tauhida');
-  // console.log(display(SLL));
+  SLL.insertLast('Tauhida');
+  // console.log('before func', display(SLL));
+  // WhatDoesThisProgramDo(SLL);
+  // console.log('after', display(SLL));
   // console.log(size(SLL));
   // console.log(isEmpty(SLL));
   // console.log(findPrevious(SLL, 'Kat'));
   // console.log(findLast(SLL));
-};
-
 main();
+
+// function that sorts out duplicates
+// best-case runtime O(n)
+// worst/avg O(n^2);
+function WhatDoesThisProgramDo(lst) {
+  let current = lst.head;
+  while (current !== null) {
+    let newNode = current;
+    while (newNode.next !== null) {
+      if (newNode.next.value === current.value) {
+        newNode.next = newNode.next.next;
+      }
+      else {
+        newNode = newNode.next;
+      }
+    }
+    current = current.next;
+  }
+}
