@@ -9,10 +9,8 @@ class LinkedList {
 
   insertFirst(item) {
     if (this.head === null) {
-
       this.head = new _Node(item, null);
     } else {
-
       const currentPointer = this.head;
       this.head = new _Node(item, currentPointer);
     }
@@ -20,12 +18,10 @@ class LinkedList {
 
   insertLast(item) {
     if (this.head === null) {
-
       this.head = new _Node(item, null);
     } else {
       let currentNode = this.head;
       while (currentNode.next !== null) {
-  
         currentNode = currentNode.next;
       }
 
@@ -155,7 +151,7 @@ const isEmpty = list => {
     return true;
   }
   return false;
-}
+};
 
 const findPrevious = (list, item) => {
   if (list.head === null){
@@ -174,7 +170,7 @@ const findPrevious = (list, item) => {
     }
   }
   return previousNode;
-}
+};
 
 const findLast = list => {
   if (list.head === null){
@@ -185,7 +181,36 @@ const findLast = list => {
     currentNode = currentNode.next;
   }
   return currentNode;
-}
+};
+previous=null
+current=this.head
+next=current.next
+
+head
+1 
+2
+3 
+4 
+5
+null
+
+const reverseLinkedList = (list) => {
+  if (list.head === null) {
+    throw new Error('Cant reverse nothing :(');
+  }
+  let currentNode = list.head;
+  let tempNode = currentNode.next;
+  let previousNode = null;
+  while (currentNode !== null){
+    tempNode = currentNode;
+    currentNode.next = previousNode;
+    // set to current
+    previousNode = tempNode;
+    // set to next
+    currentNode = tempNode.next;
+  }
+  list.head = previousNode;
+};
 
 const main = () => {
   const SLL = new LinkedList();
@@ -198,31 +223,34 @@ const main = () => {
   SLL.insertBefore('Athena', 'Boomer');
   SLL.insertAfter('Hot Dog', 'Helo');
   SLL.insertAt('Kat', 3);
-  SLL.insertLast('Tauhida');
-  // console.log('before func', display(SLL));
-  // WhatDoesThisProgramDo(SLL);
-  // console.log('after', display(SLL));
+  SLL.remove('Tauhida');
+
+  console.log('before func', display(SLL));
+  reverseLinkedList(SLL);
+  console.log('after', display(SLL));
   // console.log(size(SLL));
   // console.log(isEmpty(SLL));
   // console.log(findPrevious(SLL, 'Kat'));
   // console.log(findLast(SLL));
+};
 main();
 
 // function that sorts out duplicates
 // best-case runtime O(n)
 // worst/avg O(n^2);
-function WhatDoesThisProgramDo(lst) {
-  let current = lst.head;
-  while (current !== null) {
-    let newNode = current;
-    while (newNode.next !== null) {
-      if (newNode.next.value === current.value) {
-        newNode.next = newNode.next.next;
-      }
-      else {
-        newNode = newNode.next;
-      }
-    }
-    current = current.next;
-  }
-}
+//   function WhatDoesThisProgramDo(lst) {
+//     let current = lst.head;
+//     while (current !== null) {
+//       let newNode = current;
+//       while (newNode.next !== null) {
+//         if (newNode.next.value === current.value) {
+//           newNode.next = newNode.next.next;
+//         }
+//         else {
+//           newNode = newNode.next;
+//         }
+//       }
+//       current = current.next;
+//     }
+//   }
+// 

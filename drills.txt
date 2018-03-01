@@ -1,12 +1,3 @@
-Creating a singly linked list
-Write a function main. Within the function, using the linked list class above, create a linked list called SLL and add the following items in your linked list. Apollo, Boomer, Helo, Husker, Starbuck
-Add Tauhida to the list
-Remove squirrel from the list
-
-Implement a function called insertBefore() in the class that inserts a new node before a given node containing a key
-Implement a function called insertAfter() in the class that inserts a new node after a node containing the key
-Implement a function called insertAt() that inserts an item at a specific position in the linked list
-Add Athena before Boomer using your insertBefore() function
-Add Hotdog after Helo using the insertAfter() method
-Using the insertAt() method insert Kat in the 3rd position of the list
-Remove Tauhida from the list
+Write an algorithm to reverse a linked list. The runtime complexity of your algorithm should be linear O(n). For this exercise, notice, we are not asking you just to print the linked list in reverse or use another linked list to store the value in reverse order. Your program should reverse the direction of a given singly-linked list. In other words, all pointers should point backward. BONUS: Solve this problem using recursive algorithm (and vice versa).
+null
+0>0>0>0>0>
