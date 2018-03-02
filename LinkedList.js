@@ -218,6 +218,33 @@ const thirdFromEnd = list => {
   return threeBefore;
 };
 
+const createLoopedList = () => {
+  const list = new LinkedList();
+  list.insertFirst('Apollo');
+  list.insertFirst('Boomer');
+  list.insertFirst('Helo');
+  list.insertFirst('Husker');
+  list.insertFirst('Starbuck');
+  list.head.next.next.next.next.next = list.head.next;
+  return list;
+};
+
+const checkForCycle = list => {
+  if (list.head === null) {
+    throw new Error('The list is empty!');
+  }
+  let slowCycle = list.head;
+  let fastCycle = list.head.next;
+  while (fastCycle !== null && fastCycle.next !== null) {
+    slowCycle = slowCycle.next;
+    fastCycle = fastCycle.next.next;
+    if (slowCycle === fastCycle) {
+      return true;
+    }
+  }
+  return false;
+};
+
 const main = () => {
   const SLL = new LinkedList();
   SLL.insertFirst('Apollo');
@@ -238,9 +265,12 @@ const main = () => {
   // console.log(isEmpty(SLL));
   // console.log(findPrevious(SLL, 'Kat'));
   // console.log(findLast(SLL));
-  console.log(thirdFromEnd(SLL));
+  // console.log(thirdFromEnd(SLL));
+  console.log(checkForCycle(createLoopedList()));
 };
 main();
+
+
 
 // function that sorts out duplicates
 // best-case runtime O(n)
