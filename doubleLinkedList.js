@@ -106,10 +106,11 @@ class DoubleLinkedList {
   remove(item) {
     if (this.head === null) {
       throw new Error('Item not found');
-    }
-    if (this.head.value === item) {
+    } if (this.head.value === item) {
       this.head = this.head.next;
       return;
+    } if (this.tail.value === item) {
+      this.tail = this.tail.previous;
     }
     let currentNode = this.head;
     let previousNode;
@@ -121,12 +122,7 @@ class DoubleLinkedList {
       } 
     }
     previousNode.next = currentNode.next;
-    if (currentNode.next === null) {
-      this.tail = previousNode.next;
-    }
-    else {
-      currentNode.next.previous = previousNode;
-    }
+    currentNode.next.previous = previousNode;
   }
 
   find(item) {
