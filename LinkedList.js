@@ -218,6 +218,19 @@ const thirdFromEnd = list => {
   return threeBefore;
 };
 
+const findMiddle = list => {
+  if (list.head === null) {
+    throw new Error('The list is empty!');
+  }
+  let singleNode = list.head;
+  let skippingNode = list.head.next;
+  while (skippingNode !== null && skippingNode.next !== null) {
+    singleNode = singleNode.next;
+    skippingNode = skippingNode.next.next;
+  }
+  return singleNode;
+}
+
 const createLoopedList = () => {
   const list = new LinkedList();
   list.insertFirst('Apollo');
@@ -256,7 +269,7 @@ const main = () => {
   SLL.insertBefore('Athena', 'Boomer');
   SLL.insertAfter('Hot Dog', 'Helo');
   SLL.insertAt('Kat', 3);
-  SLL.remove('Tauhida');
+  // SLL.remove('Tauhida');
 
   // console.log('before func', display(SLL));
   // reverseLinkedList(SLL);
@@ -266,6 +279,7 @@ const main = () => {
   // console.log(findPrevious(SLL, 'Kat'));
   // console.log(findLast(SLL));
   // console.log(thirdFromEnd(SLL));
+  // console.log(findMiddle(SLL));
   console.log(checkForCycle(createLoopedList()));
 };
 main();
